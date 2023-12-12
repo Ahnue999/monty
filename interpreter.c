@@ -27,9 +27,7 @@ void inter(char *filename)
 		arg = atoi(strarr[1]);
 		func = get_opcode(strarr[0]);
 		if (func)
-		{
 			func(&top, lines);
-		}
 		lines++;
 	}
 
@@ -38,12 +36,13 @@ void inter(char *filename)
 
 char **modify(char *str)
 {
-	char *strarr[];
+	char **strarr;
 	int args = 2;
 
+	strarr = malloc(sizeof(char *) * args);
 
 	strarr[0] = strtok(str, " \0");
-	strarr[1] = strtok(str, " \0");
+	strarr[1] = strtok(NULL, " \0");
 
 	return (strarr);
 	/*

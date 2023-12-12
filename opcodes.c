@@ -14,10 +14,12 @@ void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number)
 		{NULL, NULL}
 	}
 
+	i = 0;
 	while (insts[i])
 	{
 		if (strcmp(insts[i].opcode, opcode) == 0)
-			return (insts[i].f)
+			return (insts[i].f);
+		i++;
 	}
 	return (NULL)
 }
