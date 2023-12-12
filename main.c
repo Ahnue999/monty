@@ -14,4 +14,7 @@ int main(int argc, char **argv)
 		dprintf(2, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+
+	inter(argv[1]);
+	return (0);
 }

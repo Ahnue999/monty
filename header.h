@@ -34,4 +34,13 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* opcode funcs */
+void (*get_opcode(char *))(stack_t **, unsigned int);
+
+/* string funcs */
+int _strcmp(char *, char *);
+
+/* stack funcs */
+int isempty(stack_t *top);
+
 #endif
