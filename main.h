@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
 
 extern int arg;
 
@@ -38,11 +40,20 @@ typedef struct instruction_s
 
 /* opcode funcs */
 void (*get_opcode(char *))(stack_t **, unsigned int);
+void push_opcode(stack_t **top, unsigned int line);
+void pall_opcode(stack_t **top, unsigned int line);
+void pop_opcode(stack_t **top, unsigned int line);
 
 /* string funcs */
 int _strcmp(char *, char *);
 
 /* stack funcs */
 int isempty(stack_t *top);
+stack_t *push(stack_t **top, int data);
+stack_t *pop(stack_t **top);
+
+
+void inter(char *);
+char **modify(char *);
 
 #endif

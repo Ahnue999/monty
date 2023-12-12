@@ -18,7 +18,7 @@ int isempty(stack_t *top)
  */
 stack_t *push(stack_t **top, int data)
 {
-	stack_t new;
+	stack_t *new;
 
 	new = malloc(sizeof(stack_t));
 	if (!new)
@@ -30,7 +30,7 @@ stack_t *push(stack_t **top, int data)
 	new->n = data;
 	new->prev = new->next = NULL;
 
-	if (isempty(top))
+	if (isempty(*top))
 	{
 		*top = new;
 		return (new);
@@ -41,4 +41,18 @@ stack_t *push(stack_t **top, int data)
 	*top = new;
 
 	return (new);
+}
+
+/**
+ *
+ */
+stack_t *pop(stack_t **top)
+{
+	if (!(*top))
+		return NULL;
+
+	*top = (*top)->next;
+	free((*top)->prev);
+
+	return (*top);
 }

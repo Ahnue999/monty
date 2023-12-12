@@ -13,12 +13,14 @@ void inter(char *filename)
 	size_t n;
 	int lines = 0;
 	stack_t *top = NULL;
+	char **strarr;
+	void (*func)(stack_t **, unsigned int);
 
 	fp = fopen(filename, O_RDONLY);
 	if (!fp)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	while (getline(&lineptr, &n, fp) != -1)
