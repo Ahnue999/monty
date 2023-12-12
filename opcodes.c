@@ -31,7 +31,7 @@ void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number)
  */
 void push_opcode(stack_t **top, unsigned int line)
 {
-	*top = push(top, 
+	*top = push(top, arg);
 }
 
 /**
