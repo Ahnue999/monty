@@ -53,10 +53,29 @@ void pop_opcode(stack_t **top, unsigned int line)
 {
 	if (isempty(*top))
 	{
-		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack", line);
+		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack\n", line);
 		exit(EXIT_FAILURE);
 	}
 	*top = pop(top);
+}
+
+
+/**
+ * pint_opcode - prints the value at the top of the function.
+ * @top: a pointer to the top member of a stack.
+ * @line: line number.
+ *
+ * Return: Void.
+ */
+void pint_opcode(stack_t **top, unsigned int line)
+{
+	if (isempty(*top))
+	{
+		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%d\n", (*top)->n);
 }
 
 
