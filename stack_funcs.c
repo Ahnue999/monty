@@ -51,7 +51,7 @@ stack_t *push(stack_t **top, int data)
  * pop - pops a member from a stack.
  * @top: a pointer to the top of the stack.
  *
- * Retrun: the top pointer.
+ * Return: the top pointer.
  */
 stack_t *pop(stack_t **top)
 {
