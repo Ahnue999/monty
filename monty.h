@@ -53,6 +53,7 @@ void div_opcode(stack_t **top, unsigned int line);
 void mod_opcode(stack_t **top, unsigned int line);
 void nop_opcode(stack_t **top, unsigned int line);
 void pchar_opcode(stack_t **top, unsigned int line);
+void pstr_opcode(stack_t **top, unsigned int line);
 
 /* string funcs */
 int _strcmp(char *, char *);

@@ -51,6 +51,25 @@ void pchar_opcode(stack_t **top, unsigned int line)
 }
 
 
+/**
+  * pstr_opcode - prints the string starting at the top of the stack.
+  * @top: a pointer to the top of the stack.
+  * @line: line number.
+  *
+  * Return: void.
+  */
+void pstr_opcode(stack_t **top, unsigned int line)
+{
+	stack_t *temp;
+
+	while (temp && temp->n > 0 && temp->n < 128)
+	{
+		printf("%c", temp->n);
+		temp = temp->next;
+	}
+	printf("\n");
+}
+
 
 /**
   * nop_opcode - does nothing.
