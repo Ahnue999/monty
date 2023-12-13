@@ -93,7 +93,7 @@ void pall_opcode(stack_t **top, unsigned int line)
 	temp = *top;
 	if (!isempty(temp))
 	{
-		dprint(STDERR_FILENO, "L%u: can't pint, stack empty\n", line);
+		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
 	while (temp)
