@@ -40,7 +40,7 @@ void push_opcode(stack_t **top, unsigned int line)
 {
 	if (!arg)
 	{
-		dprintf(STDERR_FILENO, "L%u: usage: push integer", line);
+		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
 	}
 	*top = push(top, arg);
