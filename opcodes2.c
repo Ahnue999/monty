@@ -84,3 +84,26 @@ void nop_opcode(__attribute__((unused)) stack_t **top, unsigned int line)
 {
 	(void)line;
 }
+
+
+/**
+  * rotl_opcode - does nothing.
+  * @top: a pointer to the top of the stack.
+  * @line: line number.
+  *
+  * Return: void.
+  */
+void rotl_opcode(stack_t **top, unsigned int line)
+{
+	stack_t *curr, *temp;
+	int temp;
+
+	curr = *top;
+
+	while (curr->next)
+		curr = curr->next;
+
+	temp = (*top)->n;
+	(*top)->n = curr->n;
+	curr->n = temp;
+}
