@@ -25,12 +25,20 @@ void inter(char *filename)
 
 	while (getline(&lineptr, &n, fp) != -1)
 	{
+		lineptr[strcspn(lineptr, "\n")] = 0;
 		strarr = modify(lineptr);
 		if (strarr[1])
 			arg = atoi(strarr[1]);
 		func = get_opcode(strarr[0]);
 		if (func)
+		{
 			func(&top, lines);
+		}
+		else
+		{
+			dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", lines, strarr[0]);
+			exit(EXIT_FAILURE);
+		}
 		lines++;
 		free(strarr);
 	}
@@ -52,8 +60,8 @@ char **modify(char *str)
 
 	strarr = malloc(sizeof(char *) * args);
 
-	strarr[0] = strtok(str, " \0");
-	strarr[1] = strtok(NULL, " \0");
+	strarr[0] = strtok(str, " \0\n");
+	strarr[1] = strtok(NULL, " \0\n");
 
 	return (strarr);
 }
