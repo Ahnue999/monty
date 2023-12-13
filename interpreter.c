@@ -12,7 +12,7 @@ void inter(char *filename, stack_t **top)
 	FILE *fp = NULL;
 	char *lineptr = NULL;
 	size_t n;
-	int lines = 0;
+	int lines = 1;
 	char **strarr;
 	void (*func)(stack_t **, unsigned int);
 

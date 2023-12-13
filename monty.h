@@ -46,6 +46,7 @@ void pop_opcode(stack_t **top, unsigned int line);
 void pint_opcode(stack_t **top, unsigned int line);
 void pall_opcode(stack_t **top, unsigned int line);
 void swap_opcode(stack_t **top, unsigned int line);
+void add_opcode(stack_t **top, unsigned int line);
 
 /* string funcs */
 int _strcmp(char *, char *);
@@ -53,7 +54,7 @@ int _strcmp(char *, char *);
 /* stack funcs */
 int isempty(stack_t *top);
 stack_t *push(stack_t **top, int data);
-stack_t *pop(stack_t **top);
+int pop(stack_t **top);
 void free_stack(stack_t **top);
 
 

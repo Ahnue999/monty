@@ -12,7 +12,8 @@ void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number)
 	instruction_t insts[] = {
 		{"push", push_opcode}, {"pall", pall_opcode},
 		{"pop", pop_opcode}, {"pint", pint_opcode},
-		{"swap", swap_opcode}, {NULL, NULL}
+		{"swap", swap_opcode}, {"add", add_opcode},
+		{NULL, NULL}
 	};
 
 	i = 0;
@@ -57,7 +58,7 @@ void pop_opcode(stack_t **top, unsigned int line)
 		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack\n", line);
 		exit(EXIT_FAILURE);
 	}
-	*top = pop(top);
+	pop(top);
 }
 
 

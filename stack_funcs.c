@@ -53,18 +53,20 @@ stack_t *push(stack_t **top, int data)
  *
  * Return: the top pointer.
  */
-stack_t *pop(stack_t **top)
+int pop(stack_t **top)
 {
 	stack_t *temp;
+	int val;
 
 	if (!(*top))
-		return (NULL);
+		return (-1);
 
+	val = (*top)->n;
 	temp = *top;
 	*top = (*top)->next;
 	free(temp);
 	if (*top)
 		((*top)->prev) = NULL;
 
-	return (*top);
+	return (val);
 }
