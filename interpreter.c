@@ -40,9 +40,7 @@ void inter(char *filename, stack_t **top)
 		}
 		func = get_opcode(strarr[0]);
 		if (func)
-		{
 			func(top, lines);
-		}
 		else
 		{
 			dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", lines, strarr[0]);
@@ -51,7 +49,6 @@ void inter(char *filename, stack_t **top)
 		lines++;
 		free(strarr);
 	}
-
 	free(lineptr);
 	fclose(fp);
 }
