@@ -23,6 +23,12 @@ int main(int argc, char **argv)
 	return (0);
 }
 
+/**
+  * free_stack - frees a stack.
+  * @top: the stack to free.
+  *
+  * Return: void.
+  */
 void free_stack(stack_t **top)
 {
 	stack_t *temp;

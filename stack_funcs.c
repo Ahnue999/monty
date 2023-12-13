@@ -14,7 +14,11 @@ int isempty(stack_t *top)
 }
 
 /**
+ * push - pushes a new member to a stack.
+ * @top: the top pointer ofthe stack.
+ * @data: the data to push.
  *
+ * Return: a pointerto the newly added member.
  */
 stack_t *push(stack_t **top, int data)
 {
@@ -35,7 +39,7 @@ stack_t *push(stack_t **top, int data)
 		*top = new;
 		return (new);
 	}
-	
+
 	(*top)->prev = new;
 	new->next = *top;
 	*top = new;
@@ -44,12 +48,15 @@ stack_t *push(stack_t **top, int data)
 }
 
 /**
+ * pop - pops a member from a stack.
+ * @top: a pointer to the top of the stack.
  *
+ * Retrun: the top pointer.
  */
 stack_t *pop(stack_t **top)
 {
 	if (!(*top))
-		return NULL;
+		return (NULL);
 
 	*top = (*top)->next;
 	free((*top)->prev);

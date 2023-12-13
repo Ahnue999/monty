@@ -44,7 +44,7 @@ void push_opcode(stack_t **top, unsigned int line)
 
 
 /**
- * pop - removes a member to a stack.
+ * pop_opcode - removes a member to a stack.
  * @top: a pointer to the top member of a stack.
  * @line: line number.
  *

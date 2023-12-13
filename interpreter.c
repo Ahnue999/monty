@@ -3,6 +3,7 @@
 /**
  * inter - reads a monty file and interprete it.
  * @filename: the name of the file.
+ * @top: a pointer to the top of the stack.
  *
  * Return: void.
  */
