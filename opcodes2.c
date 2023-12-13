@@ -95,15 +95,8 @@ void nop_opcode(__attribute__((unused)) stack_t **top, unsigned int line)
   */
 void rotl_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 {
-	stack_t *curr;
 	int temp;
 
-	curr = *top;
-
-	while (curr->next)
-		curr = curr->next;
-
-	temp = (*top)->n;
-	(*top)->n = curr->n;
-	curr->n = temp;
+	temp = pop(*top);
+	push(*top, temp);
 }
