@@ -1,3 +1,4 @@
 push 71
-push
+push 0
+div
 pall
