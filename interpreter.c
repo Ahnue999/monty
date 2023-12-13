@@ -31,11 +31,19 @@ void inter(char *filename)
 		if (func)
 			func(&top, lines);
 		lines++;
+		free(strarr);
 	}
 
 	fclose(fp);
 }
 
+/**
+ * modify - removes the spaces from the input string and
+ * divides it into tokens.
+ * @str: the string to modify.
+ *
+ * Return: an array of tokens.
+ */
 char **modify(char *str)
 {
 	char **strarr;
@@ -47,15 +55,4 @@ char **modify(char *str)
 	strarr[1] = strtok(NULL, " \0");
 
 	return (strarr);
-	/*
-	*int i, ch;
-	*int spaces = 0;
-	*i = ch = 0;
-	*while (str[i])
-	*{
-	*	if (str[i] == ' ' && str[i + 1] == ' ')
-	*		spaces = 1;
-	*	i++;
-	*}
-	*/
 }
