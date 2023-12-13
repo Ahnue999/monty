@@ -93,9 +93,9 @@ void nop_opcode(__attribute__((unused)) stack_t **top, unsigned int line)
   *
   * Return: void.
   */
-void rotl_opcode(stack_t **top, unsigned int line)
+void rotl_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 {
-	stack_t *curr, *temp;
+	stack_t *curr;
 	int temp;
 
 	curr = *top;
