@@ -6,13 +6,12 @@
  *
  * Return: void.
  */
-void inter(char *filename)
+void inter(char *filename, stack_t **top)
 {
 	FILE *fp = NULL;
 	char *lineptr = NULL;
 	size_t n;
 	int lines = 0;
-	stack_t *top = NULL;
 	char **strarr;
 	void (*func)(stack_t **, unsigned int);
 
@@ -32,7 +31,7 @@ void inter(char *filename)
 		func = get_opcode(strarr[0]);
 		if (func)
 		{
-			func(&top, lines);
+			func(top, lines);
 		}
 		else
 		{
@@ -43,6 +42,7 @@ void inter(char *filename)
 		free(strarr);
 	}
 
+	free(lineptr);
 	fclose(fp);
 }
 

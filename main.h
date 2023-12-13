@@ -53,9 +53,10 @@ int _strcmp(char *, char *);
 int isempty(stack_t *top);
 stack_t *push(stack_t **top, int data);
 stack_t *pop(stack_t **top);
+void free_stack(stack_t **top);
 
 
-void inter(char *);
+void inter(char *, stack_t **);
 char **modify(char *);
 
 #endif
