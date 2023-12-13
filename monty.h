@@ -45,6 +45,7 @@ void push_opcode(stack_t **top, unsigned int line);
 void pop_opcode(stack_t **top, unsigned int line);
 void pint_opcode(stack_t **top, unsigned int line);
 void pall_opcode(stack_t **top, unsigned int line);
+void swap_opcode(stack_t **top, unsigned int line);
 
 /* string funcs */
 int _strcmp(char *, char *);

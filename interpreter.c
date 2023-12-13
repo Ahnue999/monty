@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * inter - reads a monty file and interprete it.

@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * get_opcode - gets an opcode function.
@@ -12,7 +12,7 @@ void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number)
 	instruction_t insts[] = {
 		{"push", push_opcode}, {"pall", pall_opcode},
 		{"pop", pop_opcode}, {"pint", pint_opcode},
-		{NULL, NULL}
+		{"swap", swap_opcode}, {NULL, NULL}
 	};
 
 	i = 0;
@@ -87,16 +87,13 @@ void pint_opcode(stack_t **top, unsigned int line)
  *
  * Return: Void.
  */
-void pall_opcode(stack_t **top, unsigned int line)
+void pall_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 {
 	stack_t *temp;
 
 	temp = *top;
 	if (isempty(temp))
-	{
-		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", line);
-		exit(EXIT_FAILURE);
-	}
+		return;
 	while (temp)
 	{
 		printf("%d\n", temp->n);

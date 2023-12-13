@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * isempty - checks whether a stack is empty.
@@ -55,11 +55,16 @@ stack_t *push(stack_t **top, int data)
  */
 stack_t *pop(stack_t **top)
 {
+	stack_t *temp;
+
 	if (!(*top))
 		return (NULL);
 
+	temp = *top;
 	*top = (*top)->next;
-	free((*top)->prev);
+	free(temp);
+	if (*top)
+		((*top)->prev) = NULL;
 
 	return (*top);
 }
