@@ -127,7 +127,7 @@ void rotl_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 void rotr_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 {
 	int temp;
-	stack_t *curr, *new;
+	stack_t *curr;
 
 	curr = *top;
 	while (curr->next->next)
