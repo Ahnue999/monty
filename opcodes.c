@@ -11,7 +11,8 @@ void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number)
 	int i;
 	instruction_t insts[] = {
 		{"push", push_opcode}, {"pall", pall_opcode},
-		{"pop", pop_opcode}, {NULL, NULL}
+		{"pop", pop_opcode}, {"pint", pint_opcode},
+		{NULL, NULL}
 	};
 
 	i = 0;

@@ -42,8 +42,9 @@ typedef struct instruction_s
 /* opcode funcs */
 void (*get_opcode(char *))(stack_t **, unsigned int);
 void push_opcode(stack_t **top, unsigned int line);
-void pall_opcode(stack_t **top, unsigned int line);
 void pop_opcode(stack_t **top, unsigned int line);
+void pint_opcode(stack_t **top, unsigned int line);
+void pall_opcode(stack_t **top, unsigned int line);
 
 /* string funcs */
 int _strcmp(char *, char *);
