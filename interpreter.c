@@ -16,7 +16,7 @@ void inter(char *filename)
 	char **strarr;
 	void (*func)(stack_t **, unsigned int);
 
-	fp = fopen(filename, O_RDONLY);
+	fp = fopen(filename, "r");
 	if (!fp)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
@@ -26,7 +26,8 @@ void inter(char *filename)
 	while (getline(&lineptr, &n, fp) != -1)
 	{
 		strarr = modify(lineptr);
-		arg = atoi(strarr[1]);
+		if (strarr[1])
+			arg = atoi(strarr[1]);
 		func = get_opcode(strarr[0]);
 		if (func)
 			func(&top, lines);
