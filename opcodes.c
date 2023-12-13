@@ -38,7 +38,7 @@ void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number)
  */
 void push_opcode(stack_t **top, unsigned int line)
 {
-	if (!arg)
+	if (arg == -104)
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
