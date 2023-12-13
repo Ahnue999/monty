@@ -58,10 +58,12 @@ void pchar_opcode(stack_t **top, unsigned int line)
   *
   * Return: void.
   */
-void pstr_opcode(stack_t **top, unsigned int line)
+void pstr_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 {
 	stack_t *temp;
 
+
+	temp = *top;
 	while (temp && temp->n > 0 && temp->n < 128)
 	{
 		printf("%c", temp->n);
