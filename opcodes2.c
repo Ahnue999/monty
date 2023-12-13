@@ -95,18 +95,17 @@ void nop_opcode(__attribute__((unused)) stack_t **top, unsigned int line)
   */
 void rotl_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 {
-	int temp;
 	stack_t *curr, *new;
 
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
 		dprintf(STDERR_FILENO, "ERROR: malloc failed\n");
-		exit(EXIT_FAILURE)
+		exit(EXIT_FAILURE);
 	}
 
 	new->n = pop(top);
-	new->prev = new->next = NULL:
+	new->prev = new->next = NULL;
 
 	curr = *top;
 	while (curr->next)
