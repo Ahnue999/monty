@@ -27,6 +27,8 @@ void inter(char *filename, stack_t **top)
 	{
 		lineptr[strcspn(lineptr, "\n")] = 0;
 		strarr = modify(lineptr);
+		if (!strarr || !strarr[0])
+			continue;
 		if (strarr[1])
 			arg = atoi(strarr[1]);
 		func = get_opcode(strarr[0]);
@@ -59,9 +61,14 @@ char **modify(char *str)
 	char **strarr;
 	int args = 2;
 
+	str[strcspn(str, "\n")] = 0;
 	strarr = malloc(sizeof(char *) * args);
+	if (!strarr || strcmp(str, "") == 0)
+		return (NULL);
 
 	strarr[0] = strtok(str, " \0\n");
+	if (strarr[0][0] == '#')
+		return (NULL);
 	strarr[1] = strtok(NULL, " \0\n");
 
 	return (strarr);

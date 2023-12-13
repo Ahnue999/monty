@@ -24,24 +24,30 @@ void swap_opcode(stack_t **top, unsigned int line)
 
 
 /**
-  * add_opcode - adds the top two elements of a stack.
+  * pchar_opcode - prints the char at the top of the stack.
   * @top: a pointer to the top of the stack.
   * @line: line number.
   *
   * Return: void.
   */
-void add_opcode(stack_t **top, unsigned int line)
+void pchar_opcode(stack_t **top, unsigned int line)
 {
-	int temp;
+	int ch;
 
-	if (isempty(*top) || !(*top)->next)
+	if (isempty(*top))
 	{
-		dprintf(STDERR_FILENO, "L%u: can't add, stack too short\n", line);
+		dprintf(STDERR_FILENO, "L%u: can't pchar, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
 
-	temp = pop(top);
-	(*top)->n += temp;
+	ch = (*top)->n;
+
+	if (ch < 0 || ch >= 128)
+	{
+		dprintf(STDERR_FILENO, "L%u: can't pchar, value out of range\n", line);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", ch);
 }
 
 
@@ -56,79 +62,4 @@ void add_opcode(stack_t **top, unsigned int line)
 void nop_opcode(__attribute__((unused)) stack_t **top, unsigned int line)
 {
 	(void)line;
-}
-
-
-
-
-/**
-  * sub_opcode - subs the top two elements of a stack.
-  * @top: a pointer to the top of the stack.
-  * @line: line number.
-  *
-  * Return: void.
-  */
-void sub_opcode(stack_t **top, unsigned int line)
-{
-	int temp;
-
-	if (isempty(*top) || !(*top)->next)
-	{
-		dprintf(STDERR_FILENO, "L%u: can't sub, stack too short\n", line);
-		exit(EXIT_FAILURE);
-	}
-
-	temp = pop(top);
-	(*top)->n -= temp;
-}
-
-
-
-/**
-  * div_opcode - divides the top two elements of a stack.
-  * @top: a pointer to the top of the stack.
-  * @line: line number.
-  *
-  * Return: void.
-  */
-void div_opcode(stack_t **top, unsigned int line)
-{
-	int temp;
-
-	if (isempty(*top) || !(*top)->next)
-	{
-		dprintf(STDERR_FILENO, "L%u: can't div, stack too short\n", line);
-		exit(EXIT_FAILURE);
-	}
-
-	temp = pop(top);
-	if (!temp)
-	{
-		dprintf(STDERR_FILENO, "L%u: division by zero\n", line);
-		exit(EXIT_FAILURE);
-	}
-	(*top)->n /= temp;
-}
-
-
-
-/**
-  * mul_opcode - multiplies the top two elements of a stack.
-  * @top: a pointer to the top of the stack.
-  * @line: line number.
-  *
-  * Return: void.
-  */
-void mul_opcode(stack_t **top, unsigned int line)
-{
-	int temp;
-
-	if (isempty(*top) || !(*top)->next)
-	{
-		dprintf(STDERR_FILENO, "L%u: can't mul, stack too short\n", line);
-		exit(EXIT_FAILURE);
-	}
-
-	temp = pop(top);
-	(*top)->n *= temp;
 }

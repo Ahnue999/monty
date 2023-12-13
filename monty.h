@@ -48,7 +48,11 @@ void pall_opcode(stack_t **top, unsigned int line);
 void swap_opcode(stack_t **top, unsigned int line);
 void add_opcode(stack_t **top, unsigned int line);
 void sub_opcode(stack_t **top, unsigned int line);
+void mul_opcode(stack_t **top, unsigned int line);
+void div_opcode(stack_t **top, unsigned int line);
+void mod_opcode(stack_t **top, unsigned int line);
 void nop_opcode(stack_t **top, unsigned int line);
+void pchar_opcode(stack_t **top, unsigned int line);
 
 /* string funcs */
 int _strcmp(char *, char *);
