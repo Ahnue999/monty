@@ -21,12 +21,6 @@ int main(int argc, char **argv)
 	}
 	filename = argv[1];
 
-	if (access(filename, R_OK) != 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
-		exit(EXIT_FAILURE);
-	}
-
 	fp = fopen(filename, "r");
 	if (!fp)
 	{
