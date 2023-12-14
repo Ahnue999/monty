@@ -85,6 +85,6 @@ void rotr_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 	curr->next = *top;
 	curr->prev->next = NULL;
 	curr->prev = NULL;
-	*(top)->prev = curr;
+	(*top)->prev = curr;
 	*top = curr;
 }
