@@ -44,27 +44,22 @@ void nop_opcode(__attribute__((unused)) stack_t **top, unsigned int line)
   */
 void rotl_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 {
-	stack_t *curr, *new;
+	stack_t *curr, *temp;
 
 	if (isempty(*top) || !(*top)->next)
 		return;
 
-	new = malloc(sizeof(stack_t));
-	if (!new)
-	{
-		dprintf(STDERR_FILENO, "ERROR: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-
-	new->n = pop(top);
-	new->prev = new->next = NULL;
+	temp = (*top)->next;
+	temp->prev = NULL;
 
 	curr = *top;
 	while (curr->next)
 		curr = curr->next;
 
-	curr->next = new;
-	new->prev = curr;
+	curr->next = *top;
+	(*top)->next = NULL;
+	(*top)->prev = curr;
+	*top = temp;
 }
 
 
