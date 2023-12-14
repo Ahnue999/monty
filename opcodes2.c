@@ -81,6 +81,10 @@ void rotr_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 	int temp;
 	stack_t *curr;
 
+
+	if (isempty(*top) || !(*top)->next)
+		return;
+
 	curr = *top;
 	while (curr->next->next)
 		curr = curr->next;
