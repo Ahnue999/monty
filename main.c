@@ -1,6 +1,6 @@
 #include "monty.h"
 
-int arg;
+aux_t aux;
 /**
  * main - entry point.
  * @argc: arguments count.
@@ -18,6 +18,7 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
+	aux.mode = 'S';
 	inter(argv[1], &top);
 	free_stack(&top);
 	return (0);

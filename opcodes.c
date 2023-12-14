@@ -46,11 +46,10 @@ void push_opcode(stack_t **top, unsigned int line)
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
 	}
-#ifdef queue
-	*top = push_queue(top, arg);
-#else
-	*top = push(top, arg);
-#endif
+	if (aux.mode == 'Q')
+		*top = push_queue(top, arg);
+	else
+		*top = push(top, arg);
 }
 
 

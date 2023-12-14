@@ -7,7 +7,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-extern int arg;
+extern aux_t aux;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -39,6 +39,12 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+typedef struct aux_s
+{
+	int arg;
+	int mode;
+} aux_t;
+
 /* opcode funcs */
 void (*get_opcode(char *))(stack_t **, unsigned int);
 void push_opcode(stack_t **top, unsigned int line);
@@ -58,9 +64,6 @@ void rotl_opcode(stack_t **top, unsigned int line);
 void rotr_opcode(stack_t **top, unsigned int line);
 void stack_opcode(stack_t **top, unsigned int line);
 void queue_opcode(stack_t **top, unsigned int line);
-
-/* string funcs */
-int _strcmp(char *, char *);
 
 /* stack funcs */
 int isempty(stack_t *top);
