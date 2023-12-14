@@ -73,9 +73,7 @@ void rotl_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
   */
 void rotr_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 {
-	int temp;
-	stack_t *curr;
-
+	stack_t *temp, *curr;
 
 	if (isempty(*top) || !(*top)->next)
 		return;
@@ -84,10 +82,9 @@ void rotr_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 	while (curr->next->next)
 		curr = curr->next;
 
-	temp = curr->next->n;
-
-	free(curr->next);
-	curr->next = NULL;
-
-	push(top, temp);
+	curr->next = *top;
+	curr->prev->next = NULL;
+	curr->prev = NULL;
+	*top->prev = curr;
+	*top = curr;
 }
