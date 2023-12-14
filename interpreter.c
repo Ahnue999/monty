@@ -30,7 +30,7 @@ void inter(char *filename, stack_t **top)
 			continue;
 		if (strarr[1])
 		{
-			arg = atoi(strarr[1]);
+			aux.arg = atoi(strarr[1]);
 			if (!arg)
 			{
 				if (strcmp(strarr[1], "0") != 0)
