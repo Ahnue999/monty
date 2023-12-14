@@ -56,6 +56,8 @@ void pchar_opcode(stack_t **top, unsigned int line);
 void pstr_opcode(stack_t **top, unsigned int line);
 void rotl_opcode(stack_t **top, unsigned int line);
 void rotr_opcode(stack_t **top, unsigned int line);
+void stack_opcode(stack_t **top, unsigned int line);
+void queue_opcode(stack_t **top, unsigned int line);
 
 /* string funcs */
 int _strcmp(char *, char *);
