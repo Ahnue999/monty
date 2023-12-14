@@ -49,3 +49,34 @@ void pstr_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 	}
 	printf("\n");
 }
+
+
+
+/**
+  * stack_opcode - change the orientaion to a stack.
+  * @top: a pointer to the top of the stack.
+  * @line: line number.
+  *
+  * Return: void.
+  */
+void stack_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
+{
+#ifdef Queue
+#undef Queue
+#endif
+}
+
+
+/**
+  * queue_opcode - change the orientaion to a queue.
+  * @top: a pointer to the top of the stack.
+  * @line: line number.
+  *
+  * Return: void.
+  */
+void queue_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
+{
+#ifndef Queue
+#define Queue
+#endif
+}
