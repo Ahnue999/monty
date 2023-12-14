@@ -31,10 +31,10 @@ void inter(char *filename, stack_t **top)
 		if (strarr[1])
 		{
 			aux.arg = atoi(strarr[1]);
-			if (!arg)
+			if (!aux.arg)
 			{
 				if (strcmp(strarr[1], "0") != 0)
-					arg = -104;
+					aux.arg = -104;
 			}
 		}
 		func = get_opcode(strarr[0]);

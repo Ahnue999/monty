@@ -47,9 +47,9 @@ void push_opcode(stack_t **top, unsigned int line)
 		exit(EXIT_FAILURE);
 	}
 	if (aux.mode == 'Q')
-		*top = push_queue(top, arg);
+		*top = push_queue(top, aux.arg);
 	else
-		*top = push(top, arg);
+		*top = push(top, aux.arg);
 }
 
 
