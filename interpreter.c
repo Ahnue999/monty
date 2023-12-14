@@ -22,7 +22,6 @@ void inter(char *filename, stack_t **top)
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-
 	while (getline(&lineptr, &n, fp) != -1)
 	{
 		lineptr[strcspn(lineptr, "\n")] = 0;
@@ -46,11 +45,9 @@ void inter(char *filename, stack_t **top)
 			dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", lines, strarr[0]);
 			exit(EXIT_FAILURE);
 		}
-		lines++;
-		free(strarr);
+		lines++, free(strarr);
 	}
-	free(lineptr);
-	fclose(fp);
+	free(lineptr), fclose(fp);
 }
 
 /**
