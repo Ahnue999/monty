@@ -7,8 +7,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-extern aux_t aux;
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -44,6 +42,8 @@ typedef struct aux_s
 	int arg;
 	int mode;
 } aux_t;
+
+extern aux_t aux;
 
 /* opcode funcs */
 void (*get_opcode(char *))(stack_t **, unsigned int);

@@ -61,7 +61,7 @@ void pstr_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
   */
 void stack_opcode(__attribute__((unused)) stack_t **top, unsigned int line)
 {
-	mode = 'S';
+	aux.mode = 'S';
 	(void)line;
 }
 
@@ -75,6 +75,6 @@ void stack_opcode(__attribute__((unused)) stack_t **top, unsigned int line)
   */
 void queue_opcode(__attribute__((unused))stack_t **top, unsigned int line)
 {
-	mode = 'Q';
+	aux.mode = 'Q';
 	(void)line;
 }
