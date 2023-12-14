@@ -36,6 +36,7 @@ void inter(FILE *fp, stack_t **top)
 		else
 		{
 			dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", lines, strarr[0]);
+			free(strarr), fclose(fp);
 			exit(EXIT_FAILURE);
 		}
 		lines++, free(strarr);
