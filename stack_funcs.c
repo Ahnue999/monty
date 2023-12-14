@@ -22,7 +22,7 @@ int isempty(stack_t *top)
  */
 stack_t *push(stack_t **top, int data)
 {
-	stack_t *new;
+	stack_t *new, *curr;
 
 	new = malloc(sizeof(stack_t));
 	if (!new)
