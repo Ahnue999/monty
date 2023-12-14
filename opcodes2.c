@@ -79,7 +79,7 @@ void rotr_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 		return;
 
 	curr = *top;
-	while (curr->next->next)
+	while (curr->next)
 		curr = curr->next;
 
 	curr->next = *top;
