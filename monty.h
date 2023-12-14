@@ -65,6 +65,7 @@ int _strcmp(char *, char *);
 /* stack funcs */
 int isempty(stack_t *top);
 stack_t *push(stack_t **top, int data);
+stack_t *push_queue(stack_t **top, int data);
 int pop(stack_t **top);
 void free_stack(stack_t **top);
 

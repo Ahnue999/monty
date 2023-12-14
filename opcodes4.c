@@ -59,11 +59,10 @@ void pstr_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
   *
   * Return: void.
   */
-void stack_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
+void stack_opcode(__attribute__((unused)) stack_t **top, unsigned int line)
 {
-#ifdef Queue
-#undef Queue
-#endif
+	mode = 'S';
+	(void)line;
 }
 
 
@@ -74,9 +73,8 @@ void stack_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
   *
   * Return: void.
   */
-void queue_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
+void queue_opcode(__attribute__((unused))stack_t **top, unsigned int line)
 {
-#ifndef Queue
-#define Queue
-#endif
+	mode = 'Q';
+	(void)line;
 }
