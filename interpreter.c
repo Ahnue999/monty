@@ -28,6 +28,8 @@ void inter(stack_t **top)
 		{
 			dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", lines, code);
 			fclose(aux.fp);
+			free_stack(top);
+			free(lineptr);
 			exit(EXIT_FAILURE);
 		}
 		lines++;
