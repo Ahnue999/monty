@@ -11,5 +11,6 @@ add
 sub
 mul
 div
+push 1
 mod
 pall
