@@ -60,10 +60,10 @@ char **modify(char *str)
 	if (!strarr || strcmp(str, "") == 0)
 		return (NULL);
 
-	strarr[0] = strtok(str, " \0\n");
+	strarr[0] = strtok(str, " \t\n");
 	if (strarr[0][0] == '#')
 		return (NULL);
-	strarr[1] = strtok(NULL, " \0\n");
+	strarr[1] = strtok(NULL, " \t\n");
 
 	return (strarr);
 }
