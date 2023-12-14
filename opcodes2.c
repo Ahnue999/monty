@@ -97,6 +97,9 @@ void rotl_opcode(stack_t **top, __attribute__((unused)) unsigned int line)
 {
 	stack_t *curr, *new;
 
+	if (isempty(*top) || !(*top)->next)
+		return;
+
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
