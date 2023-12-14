@@ -40,6 +40,16 @@ stack_t *push(stack_t **top, int data)
 		return (new);
 	}
 
+	if (aux.mode == 'Q')
+	{
+		curr = *top;
+		while (curr->next)
+			curr = curr->next;
+		curr->next = new;
+		new->prev = curr;
+		return (*top);
+	}
+
 	(*top)->prev = new;
 	new->next = *top;
 	*top = new;
@@ -69,42 +79,4 @@ int pop(stack_t **top)
 		((*top)->prev) = NULL;
 
 	return (val);
-}
-
-
-
-/**
- * push - pushes a new member to a stack.
- * @top: the top pointer ofthe stack.
- * @data: the data to push.
- *
- * Return: a pointerto the newly added member.
- */
-stack_t *push_queue(stack_t **top, int data)
-{
-	stack_t *new, *curr;
-
-	new = malloc(sizeof(stack_t));
-	if (!new)
-	{
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-
-	new->n = data;
-	new->prev = new->next = NULL;
-
-	if (isempty(*top))
-	{
-		*top = new;
-		return (new);
-	}
-
-	curr = *top;
-	while (curr->next)
-		curr = curr->next;
-	curr->next = new;
-	new->prev = curr;
-
-	return (new);
 }
