@@ -7,39 +7,30 @@
  *
  * Return: void.
  */
-void inter(FILE *fp, stack_t **top)
+void inter(stack_t **top)
 {
 	char *lineptr = NULL;
 	size_t n;
 	int lines = 1;
-	char **strarr;
+	char *code;
 	void (*func)(stack_t **, unsigned int);
 
-	while (getline(&lineptr, &n, fp) != -1)
+	while (getline(&lineptr, &n, aux.fp) != -1)
 	{
 		lineptr[strcspn(lineptr, "\n")] = 0;
-		strarr = modify(lineptr);
-		if (!strarr || !strarr[0])
+		code = modify(lineptr);
+		if (!code)
 			continue;
-		if (strarr[1])
-		{
-			aux.arg = atoi(strarr[1]);
-			if (!aux.arg)
-			{
-				if (strcmp(strarr[1], "0") != 0)
-					aux.arg = -104;
-			}
-		}
-		func = get_opcode(strarr[0]);
+		func = get_opcode(code);
 		if (func)
 			func(top, lines);
 		else
 		{
-			dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", lines, strarr[0]);
-			free(strarr), fclose(fp);
+			dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", lines, code);
+			fclose(aux.fp);
 			exit(EXIT_FAILURE);
 		}
-		lines++, free(strarr);
+		lines++;
 	}
 	free(lineptr);
 }
@@ -51,20 +42,18 @@ void inter(FILE *fp, stack_t **top)
  *
  * Return: an array of tokens.
  */
-char **modify(char *str)
+char *modify(char *str)
 {
-	char **strarr;
-	int args = 2;
+	char *code;
 
 	str[strcspn(str, "\n")] = 0;
-	strarr = malloc(sizeof(char *) * args);
-	if (!strarr || strcmp(str, "") == 0)
+	if (strcmp(str, "") == 0)
 		return (NULL);
 
-	strarr[0] = strtok(str, " \t\n");
-	if (strarr[0][0] == '#')
+	code = strtok(str, " \t\n");
+	if (code && code[0] == '#')
 		return (NULL);
-	strarr[1] = strtok(NULL, " \t\n");
+	aux.arg = strtok(NULL, " \t\n");
 
-	return (strarr);
+	return (code);
 }

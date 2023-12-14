@@ -39,8 +39,9 @@ typedef struct instruction_s
 
 typedef struct aux_s
 {
-	int arg;
+	char* arg;
 	int mode;
+	FILE *fp;
 } aux_t;
 
 extern aux_t aux;
@@ -73,7 +74,7 @@ int pop(stack_t **top);
 void free_stack(stack_t **top);
 
 
-void inter(FILE *fp, stack_t **top);
-char **modify(char *);
+void inter(stack_t **top);
+char *modify(char *);
 
 #endif

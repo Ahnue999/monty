@@ -41,12 +41,32 @@ void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number)
  */
 void push_opcode(stack_t **top, unsigned int line)
 {
-	if (aux.arg == -104)
+	int s = 0, n;
+
+	if (aux.arg)
+	{
+		if (aux.arg[0] == '-')
+			s = 1;
+		for (; aux.arg[s]; s++)
+		{
+			if (aux.arg[s] < 48 || aux.arg[s] > 57)
+			{
+				dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line);
+				fclose(aux.fp);
+				free_stack(top);
+				exit(EXIT_FAILURE);
+			}
+		}
+	}
+	else
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line);
+		fclose(aux.fp);
+		free_stack(top);
 		exit(EXIT_FAILURE);
 	}
-	*top = push(top, aux.arg);
+	n = atoi(aux.arg);
+	*top = push(top, n);
 }
 
 

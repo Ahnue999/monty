@@ -11,9 +11,9 @@ aux_t aux;
 int main(int argc, char **argv)
 {
 	char *filename;
-	FILE *fp = NULL;
 	stack_t *top = NULL;
 
+	aux.fp = NULL;
 	if (argc != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
@@ -21,16 +21,16 @@ int main(int argc, char **argv)
 	}
 	filename = argv[1];
 
-	fp = fopen(filename, "r");
-	if (!fp)
+	aux.fp = fopen(filename, "r");
+	if (!aux.fp)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 
 	aux.mode = 'S';
-	inter(fp, &top);
-	fclose(fp);
+	inter(&top);
+	fclose(aux.fp);
 	free_stack(&top);
 	return (0);
 }
