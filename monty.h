@@ -73,7 +73,7 @@ int pop(stack_t **top);
 void free_stack(stack_t **top);
 
 
-void inter(char *, stack_t **);
+void inter(FILE *fp, stack_t **top);
 char **modify(char *);
 
 #endif

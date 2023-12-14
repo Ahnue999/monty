@@ -7,21 +7,14 @@
  *
  * Return: void.
  */
-void inter(char *filename, stack_t **top)
+void inter(FILE *fp, stack_t **top)
 {
-	FILE *fp = NULL;
 	char *lineptr = NULL;
 	size_t n;
 	int lines = 1;
 	char **strarr;
 	void (*func)(stack_t **, unsigned int);
 
-	fp = fopen(filename, "r");
-	if (!fp)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
-		exit(EXIT_FAILURE);
-	}
 	while (getline(&lineptr, &n, fp) != -1)
 	{
 		lineptr[strcspn(lineptr, "\n")] = 0;
@@ -47,7 +40,7 @@ void inter(char *filename, stack_t **top)
 		}
 		lines++, free(strarr);
 	}
-	free(lineptr), fclose(fp);
+	free(lineptr);
 }
 
 /**
